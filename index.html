@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Happy Anniversary</title>
+    <style>
+      body {
+        background-color: black;
+        font-family: sans-serif "Lucida Sans Unicode", Geneva, Verdana,
+          sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      /* Căn giữa nút */
+      /* .video {
+        display: none;
+      } */
+      .video {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 40rem;
+        background-color: #f3f3f3;
+        padding: 1rem 1rem;
+        box-shadow: 0 4rem 6rem rgba(237, 234, 234, 0.3);
+        z-index: 1000;
+        transition: all 0.5s;
+        border-radius: 5%;
+      }
+      .hidden {
+        display: none;
+      }
+      .button {
+        margin: 0 auto;
+        padding: 10px 20px;
+        background-color: #ff69b4;
+        color: #fff;
+        border: none;
+        border-radius: 20px;
+        font-size: 20px;
+        cursor: pointer;
+      }
+      /* Hiệu ứng trái tim */
+      .heart {
+        width: 50px;
+        height: 50px;
+        background-image: url("—Pngtree—glossy heart best vector ai_7581956.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        animation: heartBeat 0.5s linear infinite;
+      }
+      /* Keyframe cho hiệu ứng trái tim */
+      @keyframes heartBeat {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(2);
+          opacity: 0;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <button class="button">Em có yêu anh!</button>
+    </div>
+    <div class="video hidden">
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/fi-SZ0q125M"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
+    </div>
+    <script>
+      const button = document.querySelector(".button");
+      const video = document.querySelector(".video");
+      const openModal = function () {
+        video.classList.remove("hidden");
+      };
+
+      button.addEventListener("click", () => {
+        const hearts = [];
+        for (let i = 0; i < 50; i++) {
+          const heart = document.createElement("div");
+          heart.classList.add("heart");
+          heart.style.left = Math.random() * 100 + "vw";
+          heart.style.top = Math.random() * 100 + "vh";
+          heart.style.transform = `scale(${Math.random()})`;
+          heart.style.animationDelay = `${Math.random() * 2}s`;
+          document.body.appendChild(heart);
+          hearts.push(heart);
+        }
+        button.classList.toggle("hidden");
+        video.classList.toggle("hidden");
+      });
+    </script>
+  </body>
+</html>
